@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" Inherits="SISMed.Consultas.Edit" %>
+﻿<%@ Page Title="Editar Consulta" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" Inherits="SISMed.Consultas.Edit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <script src="/scripts/jquery.maskedinput.min.js"></script>
         <script>
@@ -12,10 +12,10 @@
         <asp:EntityDataSource ID="edsConsulta" runat="server" 
             ConnectionString="name=SISMedEntities" DefaultContainerName="SISMedEntities" 
             EnableFlattening="False" EnableInsert="True" EntitySetName="Consultas"
-            EnableUpdate="true" OnUpdated="edsConsulta_Updated">
-            <InsertParameters>
+            EnableUpdate="true" OnUpdated="edsConsulta_Updated" Where="it.Id = @Id">
+            <WhereParameters>
                 <asp:QueryStringParameter Name="Id" Type="Int32" QueryStringField="id" />
-            </InsertParameters>
+            </WhereParameters>
         </asp:EntityDataSource>
 
         <asp:FormView ID="fvConsulta" runat="server" DataKeyNames="Id" 

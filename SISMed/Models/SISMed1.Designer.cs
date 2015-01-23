@@ -1565,10 +1565,12 @@ namespace SISMed.Models
         /// Create a new Medico object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        public static Medico CreateMedico(global::System.Int32 id)
+        /// <param name="usuarioId">Initial value of the UsuarioId property.</param>
+        public static Medico CreateMedico(global::System.Int32 id, global::System.Int32 usuarioId)
         {
             Medico medico = new Medico();
             medico.Id = id;
+            medico.UsuarioId = usuarioId;
             return medico;
         }
 
@@ -1602,6 +1604,30 @@ namespace SISMed.Models
         private global::System.Int32 _Id;
         partial void OnIdChanging(global::System.Int32 value);
         partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UsuarioId
+        {
+            get
+            {
+                return _UsuarioId;
+            }
+            set
+            {
+                OnUsuarioIdChanging(value);
+                ReportPropertyChanging("UsuarioId");
+                _UsuarioId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UsuarioId");
+                OnUsuarioIdChanged();
+            }
+        }
+        private global::System.Int32 _UsuarioId;
+        partial void OnUsuarioIdChanging(global::System.Int32 value);
+        partial void OnUsuarioIdChanged();
 
         #endregion
 

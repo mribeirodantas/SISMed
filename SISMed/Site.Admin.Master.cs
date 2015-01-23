@@ -20,15 +20,28 @@ namespace SISMed
             }
             else
             {
-                if (string.IsNullOrWhiteSpace(userTypeId.ToString()) || userTypeId.ToString() != "4")
+                if (string.IsNullOrWhiteSpace(userTypeId.ToString()) || int.Parse(userTypeId.ToString()) < 3)
                     Response.Redirect(ResolveUrl("~/Dashboard/Default.aspx"));
             }
         }
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {
-            Session.Remove("UsuarioId");
+            Session.Abandon();
+            Session.Contents.RemoveAll();
             Response.Redirect("/Login/Default.aspx");
+        }
+
+        protected void Menu_MenuItemDataBound(object sender, MenuEventArgs e)
+        {
+            SiteMapNode item = e.Item.DataItem as SiteMapNode;
+            if (item != null && !string.IsNullOrWhiteSpace(Session["TipoDeUsuarioId"].ToString()))
+            {
+                if (string.IsNullOrEmpty(item["userTypeId"]) || int.Parse(Session["TipoDeUsuarioId"].ToString()) < int.Parse(item["userTypeId"].ToString()))
+                {
+                    (sender as Menu).Items.Remove(e.Item);
+                }
+            }
         }
     }
 }

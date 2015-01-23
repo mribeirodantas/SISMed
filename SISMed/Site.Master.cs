@@ -20,7 +20,8 @@ namespace SISMed
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {
-            Session.Remove("UsuarioId");
+            Session.Abandon();
+            Session.Contents.RemoveAll();
             Response.Redirect("/Login/Default.aspx");
         }
 

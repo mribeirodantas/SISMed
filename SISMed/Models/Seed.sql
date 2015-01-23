@@ -21,5 +21,5 @@ GO
 INSERT INTO [dbo].[Pessoas_Usuario] (Email, Senha, TipoDeUsuarioId, Id) VALUES ('sismed@sismed.com', 'be2f93326410585f5c3306ca858f500ef27f296d23afaa7cfd6149ef22d09b652ce326051554057db0817854d6689cc7cc4dfba2146b0a7534c0a7b3e6341c83', 4, SCOPE_IDENTITY())
 GO
 
-INSERT INTO [dbo].[Medicos] (Usuario_Id) VALUES (1)
+INSERT INTO [dbo].[Medicos] (UsuarioId, Usuario_Id) VALUES (1, 1)
 GO

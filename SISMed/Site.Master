@@ -9,9 +9,9 @@
     <title><%: Page.Title %> · SISMed</title>
     <link href="http://fonts.googleapis.com/css?family=Varela+Round:400" rel="stylesheet" />
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="/content/css/normalize.css" rel="stylesheet" />
     <link href="/content/css/boilerplate.css" rel="stylesheet" />
-    <link href="/content/css/font-awesome.css" rel="stylesheet" />
     <link href="/content/css/main.css" rel="stylesheet" />
     <link href="/content/css/grid.css" rel="stylesheet" />
     <script src="/scripts/jquery-1.10.2.min.js"></script>
@@ -29,7 +29,7 @@
             </section>
             <section class="toolbar section">
                 <menu>
-                    <% if (!string.IsNullOrWhiteSpace(Session["TipoDeUsuarioId"].ToString()) && Session["TipoDeUsuarioId"].ToString() == "4")
+                    <% if (!string.IsNullOrWhiteSpace(Session["TipoDeUsuarioId"].ToString()) && int.Parse(Session["TipoDeUsuarioId"].ToString()) >= 3)
                        { %>
                     <a class="greener" href="/Administracao/Usuarios/Default.aspx">
                         <span class="icon at-left fa fa-gears"></span>
@@ -37,7 +37,7 @@
                     </a>
                     <% } %>
                     <div class="align right">
-                        <a class="light-green">SISMed</a><asp:LinkButton ID="btnLogout" CssClass="greenish" Text="<span class='text'>Sair</span> <span class='icon fa fa-sign-out'></span>" runat="server" OnClick="btnLogout_Click" /></div>
+                        <a class="light-green">SISMed</a><asp:LinkButton ID="btnLogout" CssClass="greenish" Text="<span class='text'>Sair</span> <span class='icon fa fa-sign-out'></span>" runat="server" OnClick="btnLogout_Click" CausesValidation="false" /></div>
                 </menu>
             </section>
         </header>

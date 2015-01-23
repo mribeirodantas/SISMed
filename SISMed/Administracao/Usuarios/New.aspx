@@ -18,7 +18,7 @@
         </asp:EntityDataSource>
         <asp:EntityDataSource ID="edsUsuario" runat="server" ConnectionString="name=SISMedEntities" DefaultContainerName="SISMedEntities" EnableFlattening="False" EntitySetName="Pessoas" EnableInsert="True" EntityTypeFilter="Usuario" OnInserting="edsUsuario_Inserting" OnInserted="edsUsuario_Inserted">
         </asp:EntityDataSource>
-        <asp:SqlDataSource ID="sdsMedico" runat="server" ConnectionString="<%$ ConnectionStrings:SISMedConnectionString %>" InsertCommand="INSERT INTO [Medicos] ([Usuario_Id]) VALUES (@Usuario_Id)">
+        <asp:SqlDataSource ID="sdsMedico" runat="server" ConnectionString="<%$ ConnectionStrings:SISMedConnectionString %>" InsertCommand="INSERT INTO [Medicos] ([UsuarioId], [Usuario_Id]) VALUES (@UsuarioId, @Usuario_Id)">
         </asp:SqlDataSource>
         <asp:FormView ID="fvUsuario" runat="server" RenderOuterTable="false" DataKeyNames="Id" DataSourceID="edsUsuario" DefaultMode="Insert">
             <InsertItemTemplate>

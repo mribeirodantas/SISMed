@@ -493,3 +493,17 @@ h3 .action {
     color: white;
     background-color: rgb(120, 238, 171);
 }
+
+.pagination {
+    background: #51DF8F;
+    color: white;
+}
+
+.pagination a {
+    color: white;
+}
+
+.pagination tr,
+.pagination td {
+    border: 0 !important;
+}

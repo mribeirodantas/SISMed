@@ -9,9 +9,9 @@
     <title><%: Page.Title %> · SISMed</title>
     <link href="http://fonts.googleapis.com/css?family=Varela+Round:400" rel="stylesheet" />
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="/content/css/normalize.css" rel="stylesheet" />
     <link href="/content/css/boilerplate.css" rel="stylesheet" />
-    <link href="/content/css/font-awesome.css" rel="stylesheet" />
     <link href="/content/css/main.css" rel="stylesheet" />
     <link href="/content/css/grid.css" rel="stylesheet" />
     <script src="/scripts/jquery-1.10.2.min.js"></script>
@@ -34,14 +34,15 @@
                         <span class="text">Voltar ao Sistema</span>
                     </a>
                     <div class="align right">
-                        <a class="light-green">SISMed</a><asp:LinkButton ID="btnLogout" CssClass="greenish" Text="<span class='text'>Sair</span> <span class='icon fa fa-sign-out'></span>" runat="server" OnClick="btnLogout_Click" /></div>
+                        <a class="light-green">SISMed</a><asp:LinkButton ID="btnLogout" CssClass="greenish" Text="<span class='text'>Sair</span> <span class='icon fa fa-sign-out'></span>" runat="server" OnClick="btnLogout_Click" CausesValidation="false" /></div>
                 </menu>
             </section>
         </header>
         <section class="body">
             <asp:Menu ID="Menu" runat="server" DataSourceID="smdsMenu"
                 StaticDisplayLevels="1" MaximumDynamicDisplayLevels="0" IncludeStyleBlock="false"
-                StaticSubMenuIndent="5px" CssClass="admin sidebar section" SkipLinkText="">
+                StaticSubMenuIndent="5px" CssClass="admin sidebar section" SkipLinkText=""
+                onmenuitemdatabound="Menu_MenuItemDataBound">
             </asp:Menu>
             <asp:SiteMapDataSource ID="smdsMenu" SiteMapProvider="Admin" ShowStartingNode="false" runat="server" />
             <div class="section overflow">

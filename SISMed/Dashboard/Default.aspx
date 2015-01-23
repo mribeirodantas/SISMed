@@ -8,10 +8,18 @@
     <div class="row">
         <div class="col-6">
             <div class="card">
-                <h3>Consultas do Dia</h3>
+                <h3>Agendamentos do Dia</h3>
                 <asp:EntityDataSource ID="edsAgendamentos" runat="server" ConnectionString="name=SISMedEntities"
                     DefaultContainerName="SISMedEntities" EnableFlattening="False" EntitySetName="Agendamentos"
-                    Include="Paciente" Where="Day(it.[Horario]) = Day(CurrentDateTime())" OrderBy="it.[Horario] ASC, it.[Paciente].[Nome]">
+                    Include="Paciente, Medico" OrderBy="it.[Horario] ASC, it.[Paciente].[Nome]"
+                    Where="(it.[Ativo] = False)
+                        AND (Day(it.[Horario]) = Day(CurrentDateTime()))
+                        AND ((it.Medico.UsuarioId = @UsuarioId AND @TipoDeUsuarioId = 2)
+                            OR (@TipoDeUsuarioId != 2))">
+                    <WhereParameters>
+                        <asp:SessionParameter Type="Int32" SessionField="TipoDeUsuarioId" ConvertEmptyStringToNull="true" Name="TipoDeUsuarioId" />
+                        <asp:SessionParameter Type="Int32" SessionField="UsuarioId" ConvertEmptyStringToNull="true" Name="UsuarioId" />
+                    </WhereParameters>
                 </asp:EntityDataSource>
                 <asp:GridView ID="gvAgendamentos" runat="server" AutoGenerateColumns="False" DataSourceID="edsAgendamentos"
                     CssClass="table" AllowPaging="True" PageSize="5" ShowHeaderWhenEmpty="true">
@@ -31,6 +39,7 @@
                     <EmptyDataTemplate>
                         Não há consultas marcadas.
                     </EmptyDataTemplate>
+                    <PagerStyle CssClass="pagination" />
                 </asp:GridView>
             </div>
         </div>
@@ -39,8 +48,13 @@
                 <h3>Últimas Consultas</h3>
                 <asp:EntityDataSource ID="edsConsultas" runat="server" 
                     ConnectionString="name=SISMedEntities" DefaultContainerName="SISMedEntities" 
-                    EnableFlattening="False" EntitySetName="Consultas" 
-                    Select="it.Id, it.Paciente, it.DataHora" OrderBy="it.[DataHora] DESC">
+                    EnableFlattening="False" EntitySetName="Consultas"
+                    Select="it.Id, it.Paciente, it.Medico, it.DataHora" OrderBy="it.[DataHora] DESC"
+                    Where="(it.Medico.UsuarioId = @UsuarioId AND @TipoDeUsuarioId = 2) OR (@TipoDeUsuarioId != 2)">
+                    <WhereParameters>
+                        <asp:SessionParameter Type="Int32" SessionField="TipoDeUsuarioId" ConvertEmptyStringToNull="true" Name="TipoDeUsuarioId" />
+                        <asp:SessionParameter Type="Int32" SessionField="UsuarioId" ConvertEmptyStringToNull="true" Name="UsuarioId" />
+                    </WhereParameters>
                 </asp:EntityDataSource>
                 <asp:GridView ID="gvConsultas" runat="server" AutoGenerateColumns="False" 
                     DataKeyNames="Id" DataSourceID="edsConsultas" PageSize="5"
@@ -66,6 +80,7 @@
                     <EmptyDataTemplate>
                         Vazio.
                     </EmptyDataTemplate>
+                    <PagerStyle CssClass="pagination" />
                 </asp:GridView>
             </div>
         </div>

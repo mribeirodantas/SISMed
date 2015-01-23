@@ -101,6 +101,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsuarioId" Type="int" Nullable="false" />
     <Property Name="Usuario_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="HorariosDeAtendimento">
@@ -462,6 +463,7 @@
           <NavigationProperty Name="Usuario" Relationship="SISMed.MedicoUsuario" FromRole="Medico" ToRole="Usuario" />
           <NavigationProperty Name="Consultas" Relationship="SISMed.MedicoConsulta" FromRole="Medico" ToRole="Consulta" />
           <NavigationProperty Name="Agendamentos" Relationship="SISMed.MedicoAgendamento" FromRole="Medico" ToRole="Agendamento" />
+          <Property Type="Int32" Name="UsuarioId" Nullable="false" />
         </EntityType>
         <EntityType Name="HorarioDeAtendimento">
           <Key>
@@ -702,6 +704,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(SISMed.Medico)">
         <MappingFragment StoreEntitySet="Medicos">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -822,9 +825,12 @@
           <ConnectorPoint PointX="8.625" PointY="16.78185150239733" />
           <ConnectorPoint PointX="9.25" PointY="3.412985026041667" />
         </InheritanceConnector>
-        <EntityTypeShape EntityType="SISMed.Medico" Width="1.5" PointX="3.75" PointY="3.625" />
+        <EntityTypeShape EntityType="SISMed.Medico" Width="1.5" PointX="3.75" PointY="3.625" Height="2.1725878906249996" />
         <EntityTypeShape EntityType="SISMed.HorarioDeAtendimento" Width="1.5" PointX="5.75" PointY="4.375" />
-        <AssociationConnector Association="SISMed.HorarioDeAtendimentoMedico" />
+        <AssociationConnector Association="SISMed.HorarioDeAtendimentoMedico" >
+          <ConnectorPoint PointX="5.75" PointY="5.0862939453125" />
+          <ConnectorPoint PointX="5.25" PointY="5.0862939453125" />
+        </AssociationConnector>
         <EntityTypeShape EntityType="SISMed.TipoDeUsuario" Width="1.5" PointX="1.5" PointY="3.25" />
         <AssociationConnector Association="SISMed.TipoDeUsuarioUsuario" ManuallyRouted="true" >
           <ConnectorPoint PointX="2.65625" PointY="3.25" />
@@ -833,7 +839,10 @@
           <ConnectorPoint PointX="3.408115625" PointY="20.501920414012183" />
           <ConnectorPoint PointX="3.5" PointY="2.7302864583333331" />
         </AssociationConnector>
-        <AssociationConnector Association="SISMed.MedicoUsuario" />
+        <AssociationConnector Association="SISMed.MedicoUsuario" >
+          <ConnectorPoint PointX="4.375" PointY="3.625" />
+          <ConnectorPoint PointX="4.375" PointY="2.7302864583333335" />
+        </AssociationConnector>
         <EntityTypeShape EntityType="SISMed.DiaDaSemana" Width="1.5" PointX="8.375" PointY="5.5" />
         <AssociationConnector Association="SISMed.DiaDaSemanaHorarioDeAtendimento" />
         <EntityTypeShape EntityType="SISMed.EstadoCivil" Width="1.5" PointX="8.75" PointY="3.5" />
@@ -848,23 +857,23 @@
           <ConnectorPoint PointX="2.375" PointY="6.7401432291666667" />
         </AssociationConnector>
         <AssociationConnector Association="SISMed.MedicoConsulta">
-          <ConnectorPoint PointX="4.125" PointY="5.4129850260416665" />
-          <ConnectorPoint PointX="4.125" PointY="5.75" />
+          <ConnectorPoint PointX="4.125" PointY="5.797587890625" />
+          <ConnectorPoint PointX="4.125" PointY="6.25" />
         </AssociationConnector>
         <AssociationConnector Association="SISMed.PacienteConsulta">
-          <ConnectorPoint PointX="10.53125" PointY="3.6052864583333331" />
-          <ConnectorPoint PointX="10.53125" PointY="8.078837890625" />
-          <ConnectorPoint PointX="10.473955833333333" PointY="8.078837890625" />
-          <ConnectorPoint PointX="10.307289166666665" PointY="8.078837890625" />
-          <ConnectorPoint PointX="4.989583333333333" PointY="8.078837890625" />
-          <ConnectorPoint PointX="4.822916666666667" PointY="8.078837890625" />
-          <ConnectorPoint PointX="4.5" PointY="8.078837890625" />
+          <ConnectorPoint PointX="10.57031125" PointY="3.6052864583333331" />
+          <ConnectorPoint PointX="10.57031125" PointY="8.172841796875" />
+          <ConnectorPoint PointX="10.493486458333335" PointY="8.172841796875" />
+          <ConnectorPoint PointX="10.326819791666667" PointY="8.172841796875" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="8.172841796875" />
+          <ConnectorPoint PointX="4.822916666666667" PointY="8.172841796875" />
+          <ConnectorPoint PointX="4.5" PointY="8.172841796875" />
         </AssociationConnector>
         <EntityTypeShape EntityType="SISMed.Agendamento" Width="1.5" PointX="5.5" PointY="9.25" Height="2.3648893229166674" />
         <AssociationConnector Association="SISMed.MedicoAgendamento" >
-          <ConnectorPoint PointX="4.90625" PointY="5.6052864583333335" />
-          <ConnectorPoint PointX="4.90625" PointY="10.432444661458334" />
-          <ConnectorPoint PointX="5.5" PointY="10.432444661458334" />
+          <ConnectorPoint PointX="4.90625" PointY="5.797587890625" />
+          <ConnectorPoint PointX="4.90625" PointY="10.5307421875" />
+          <ConnectorPoint PointX="5.5" PointY="10.5307421875" />
         </AssociationConnector>
         <AssociationConnector Association="SISMed.PacienteAgendamento" >
           <ConnectorPoint PointX="10.3906225" PointY="3.6052864583333331" />

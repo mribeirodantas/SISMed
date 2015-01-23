@@ -28,6 +28,7 @@ namespace SISMed.Administracao.Usuarios
             if (u.TipoDeUsuarioId > 1)
             {
                 sdsMedico.InsertParameters.Add(new Parameter("Usuario_Id", TypeCode.String, u.Id.ToString()));
+                sdsMedico.InsertParameters.Add(new Parameter("UsuarioId", TypeCode.String, u.Id.ToString()));
                 sdsMedico.Insert();
             }
             Response.Redirect(string.Format("./Show.aspx?id={0}&success=VXN1w6FyaW8gY2FkYXN0cmFkbyBjb20gc3VjZXNzby4=", u.Id));

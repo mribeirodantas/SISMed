@@ -9,10 +9,13 @@
             <ItemTemplate>
                 <h3 class="margin-bottom">
                     <%# Eval("Nome") %> <%# Eval("Sobrenome") %>
+                    <% if (!string.IsNullOrWhiteSpace(Session["TipoDeUsuarioId"].ToString()) && int.Parse(Session["TipoDeUsuarioId"].ToString()) == 4)
+                           { %>
                     <asp:HyperLink ID="EditButton" runat="server" CssClass="action"
                         NavigateUrl='<%# Eval("Id", "./Edit.aspx?id={0}") %>'>
                         <i class="fa fa-pencil-square"></i>
                     </asp:HyperLink>
+                    <% } %>
                 </h3>
                 <% if(!string.IsNullOrEmpty(Request.QueryString["success"])) { %>
                     <asp:Panel runat="server" CssClass="notification success">

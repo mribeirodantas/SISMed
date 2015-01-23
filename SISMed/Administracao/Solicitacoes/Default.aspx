@@ -31,7 +31,7 @@
 
         <asp:GridView ID="gvSolicitacoes" runat="server" AutoGenerateColumns="False" DataKeyNames="Id"
             DataSourceID="edsSolicitacoes" ShowHeaderWhenEmpty="True" OnRowCommand="gvSolicitacoes_RowCommand"
-            CssClass="table">
+            CssClass="table" AllowPaging="true" PageSize="15">
             <Columns>
                 <asp:TemplateField HeaderText="Solicitante">
                     <ItemTemplate>
@@ -53,6 +53,7 @@
                 Vazio.
             </EmptyDataTemplate>
             <EmptyDataRowStyle CssClass="center" />
+            <PagerStyle CssClass="pagination" />
         </asp:GridView>
     </div>
 </asp:Content>

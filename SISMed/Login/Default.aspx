@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width" />
     <title>Login · SISMed</title>
     <link href="http://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="<%: ResolveUrl("~/content/css/normalize.css") %>" rel="stylesheet" />
     <link href="<%: ResolveUrl("~/content/css/boilerplate.css") %>" rel="stylesheet" />
-    <link href="<%: ResolveUrl("~/content/css/font-awesome.css") %>" rel="stylesheet" />
     <link href="<%: ResolveUrl("~/content/css/main.css") %>" rel="stylesheet" />
     <script src="<%: ResolveUrl("~/scripts/jquery-1.10.2.min.js") %>"></script>
     <script src="<%: ResolveUrl("~/scripts/modernizr-2.6.2.min.js") %>"></script>
